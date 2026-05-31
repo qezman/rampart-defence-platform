@@ -12,7 +12,6 @@ A production-grade three-tier web application for an armoured vehicle engineerin
 rampart-defence-platform/
 ├── frontend/           # Next.js 14 app (TypeScript, Tailwind CSS, Resend)
 ├── infrastructure/     # Terraform IaC (VPC, ECS, RDS, ALB, Route 53, ACM)
-├── docker/             # Dockerfiles for frontend container
 └── README.md
 ```
 
