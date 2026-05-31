@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Armoured project visual</title>
+  <desc id="desc">A dark operational project image placeholder with an armoured convoy motif.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="0.55" stop-color="#202020"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="signal" cx="72%" cy="30%" r="55%">
+      <stop offset="0" stop-color="#2997ff" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#2997ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect width="1200" height="760" fill="url(#signal)"/>
+  <path d="M0 565c135-41 284-53 446-35 249 28 435 90 754 30v200H0z" fill="#020202" opacity="0.65"/>
+  <g fill="none" stroke="#f5f5f7" stroke-opacity="0.16">
+    <path d="M190 430h238l54 48h122l40-48h230l48 38v54H146v-42z" stroke-width="5"/>
+    <path d="M250 430l45-64h178l46 64" stroke-width="4"/>
+    <path d="M682 430l50-72h118l58 72" stroke-width="4"/>
+    <circle cx="306" cy="526" r="54" stroke-width="8"/>
+    <circle cx="786" cy="526" r="54" stroke-width="8"/>
+  </g>
+  <g stroke="#2997ff" stroke-width="3" stroke-opacity="0.55" fill="none">
+    <path d="M270 348h630"/>
+    <path d="M900 348l-34-24"/>
+    <path d="M900 348l-34 24"/>
+  </g>
+  <g fill="#f5f5f7" fill-opacity="0.18">
+    <rect x="124" y="152" width="210" height="12" rx="6"/>
+    <rect x="124" y="184" width="340" height="10" rx="5"/>
+    <rect x="124" y="214" width="280" height="10" rx="5"/>
+  </g>
+</svg>

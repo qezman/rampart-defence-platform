@@ -1,0 +1,73 @@
+name: Deploy to AWS with Terraform
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: read
+  actions: read
+  id-token: write
+  packages: read
+jobs:
+  deploy-iac:
+    runs-on: [self-hosted, docker, terraform]
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # - name: Setup GitHub OIDC
+      #   run: |
+      #     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      #     unzip awscliv2.zip
+      #     sudo ./aws/install
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - name: Install tfsec for security scanning
+        run: |
+          curl -sLo tfsec https://github.com/aquasecurity/tfsec/releases/download/v1.28.11/tfsec-linux-amd64
+          chmod +x tfsec
+          ./tfsec --version
+
+      - name: "Terraform init"
+        run: terraform init
+
+      - name: Write terraform.tfvars
+        run: |
+          printf '%s' "${{ secrets.TF_VARS_SECRET }}" > terraform.tfvars
+          cat terraform.tfvars
+
+      - name: "Terraform fmt"
+        run: terraform fmt
+
+      - name: "Terraform Validate"
+        run: terraform validate
+
+      - name: "tfsec"
+        run: ./tfsec . || true
+
+      - name: "Terraform Plan"
+        run: terraform plan
+
+      - name: "Terraform Output"
+        run: terraform output
+
+      # - name: "Terraform Apply"
+      #   run: terraform apply -auto-approve
+
+      # - name: "Terraform Destroy"
+      #   run: terraform destroy -auto-approve

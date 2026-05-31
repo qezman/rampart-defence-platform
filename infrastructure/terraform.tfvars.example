@@ -1,0 +1,11 @@
+environment          = "production"
+vpc_cidrblock        = "192.168.0.0/16"
+domain-name          = "yourdomain.com"
+email                = "you@yourdomain.com"
+db_instance_class    = "db.t3.micro"
+db_allocated_storage = 20
+db_name              = "appdb"
+db_username          = "admin"
+db_password          = "your-secure-password"
+frontend_image       = "YOUR_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/production-frontend:latest"
+resend_api_key       = "re_your_resend_key"
