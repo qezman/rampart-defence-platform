@@ -1,0 +1,8 @@
+rampart-full-stack/backend/
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.*
