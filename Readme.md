@@ -1,8 +1,8 @@
 # Rampart Defence Engineering — Platform
 
-A production-grade three-tier web application for an armoured vehicle engineering company, built on AWS using Terraform and deployed via GitHub Actions CI/CD.
+A A containerised Next.js application deployed on AWS with full infrastructure automation for an armoured vehicle engineering company, built on AWS using Terraform and deployed via GitHub Actions CI/CD.
 
-**Live site:** Deployable on demand — see [Infrastructure](#infrastructure) below.
+**Live site:** Deployable on demand - see [Infrastructure](#infrastructure) below.
 
 ---
 
@@ -65,7 +65,7 @@ npm run dev
 Set environment variable:
 
 ```env
-RESEND_API_KEY=re_your_key_here
+RESEND_API_KEY=re_key_here
 ```
 
 ---
@@ -87,7 +87,7 @@ All AWS resources provisioned with Terraform across four modules:
 cd infrastructure
 
 # Configure backend
-# Update backend.tf with your S3 bucket name
+# Update backend.tf with S3 bucket name
 
 # Set variables
 cp terraform.tfvars.example terraform.tfvars
